@@ -4,6 +4,7 @@
 	 viewBox="0 0 1024 1024" style="enable-background:new 0 0 1024 1024;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#FFFFFF;}
+        .st-bg{fill:#FFFC00;} /* Snapchat yellow */
 </style>
 <rect class="st-bg" width="1024" height="1024"/>
 <g>
