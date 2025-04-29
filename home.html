@@ -6,23 +6,117 @@
   <link rel="shortcut icon" href="img/faviconV2.png">
   <meta name="description" content="Snapchat Technical Error">
   <meta property="og:site_name" content="Snapchat">
-  <link rel="stylesheet" href="/css/error.css">
   <title>Something Went Wrong • Snapchat</title>
+
+  <!-- CSS Inline -->
+  <style>
+    /* Styles généraux de la page d'erreur */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Conteneur principal de la page d'erreur */
+    .error-page {
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .error-icon .logo {
+      width: 150px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 26px;
+      color: #FF3B30;
+      margin-bottom: 20px;
+    }
+
+    .error-message {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .error-description {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 30px;
+    }
+
+    /* Style des boutons */
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 10px 0;
+      transition: background-color 0.3s ease;
+    }
+
+    .retry-button {
+      background-color: #FF3B30;
+      color: white;
+    }
+
+    .retry-button:hover {
+      background-color: #e0001c;
+    }
+
+    .support-button {
+      background-color: #5C6BC0;
+      color: white;
+    }
+
+    .support-button:hover {
+      background-color: #4f5ba7;
+    }
+
+    /* Footer */
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      font-size: 12px;
+      color: #bbb;
+    }
+  </style>
+
 </head>
 <body>
   <!-- Page Container -->
   <div class="error-page">
     <div class="error-content">
+      <!-- Logo -->
       <div class="error-icon">
-        <img src="img/snapchat-logo.svg" alt="Snapchat Logo" class="logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Snapchat_logo.svg" alt="Snapchat Logo" class="logo">
       </div>
+
+      <!-- Titre et message d'erreur -->
       <h1>Oops! Something Went Wrong.</h1>
       <p class="error-message">We're having trouble connecting to the servers. Please try again later.</p>
 
+      <!-- Description d'erreur -->
       <div class="error-description">
         <p>If the issue persists, you can reach out to our support team for help.</p>
       </div>
 
+      <!-- Boutons -->
       <div class="error-buttons">
         <button onclick="window.location.href='/home.html';" class="retry-button">Try Again</button>
         <button onclick="window.location.href='/contact-support.html';" class="support-button">Contact Support</button>
@@ -35,6 +129,11 @@
     <p>&copy; 2025 Snapchat. All Rights Reserved.</p>
   </footer>
 
-  <script src="/js/error.js"></script>
+  <!-- JS Inline (si nécessaire) -->
+  <script>
+    // Ici, tu peux ajouter du JavaScript si nécessaire.
+    // Par exemple, pour gérer les événements de clic sur les boutons.
+    // Pour l'instant, les boutons redirigent vers d'autres pages.
+  </script>
 </body>
 </html>
